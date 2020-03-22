@@ -1,0 +1,13 @@
+<main>
+    <h1 class="main-product">My product</h1>
+    {{#if hasProducts}}
+    <ul>
+        {{#each products}}
+        <li>{{this.name}}</li>
+        {{/each}}
+    </ul>
+    {{else}}
+    <div>No Product...</div>
+    {{/if}}
+
+</main>
