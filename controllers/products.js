@@ -2,7 +2,6 @@ const create = require('../models/product');
 const Product = create.product();
 
 exports.getAddProduct = (req, res, next) => {
-	console.log('In another middleware');
 	res.render('add-product', {
 		title: 'Add Product',
 		buttonName: 'Add',
@@ -15,18 +14,17 @@ exports.getAddProduct = (req, res, next) => {
 };
 
 exports.postAddProduct = (req, res, next) => {
-	Product.save({name: req.body.title });
-	console.log('products => ', Product.fetchAll());
+	Product.save({ name: req.body.title });
 	res.redirect('/');
 };
 
-exports.getProductsList = (req, res, next) => {
-	const products = Product.fetchAll();
+exports.getProductsList = async (req, res, next) => {
+	const products =  await Product.fetchAll();
 	res.render('shop', {
 		products: products,
 		hasProducts: products.length > 0,
-        activeShop: true,
-        addProductCSS: true,
-        shopCSS: true,
+		activeShop: true,
+		addProductCSS: true,
+		shopCSS: true
 	});
 };
