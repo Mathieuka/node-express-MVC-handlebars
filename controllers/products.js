@@ -2,11 +2,11 @@ const create = require('../models/product');
 const Product = create.product();
 
 exports.getAddProduct = (req, res, next) => {
-	res.render('add-product', {
+	res.render('admin/add-product', {
 		title: 'Add Product',
 		buttonName: 'Add',
 		navBar: { shop: 'Shop', addProduct: 'Add Product' },
-		activeAddProduct: true,
+		activeAdminAddProduct: true,
 		addProductCSS: true,
 		shopCSS: true,
 		errorCSS: true
@@ -20,7 +20,7 @@ exports.postAddProduct = (req, res, next) => {
 
 exports.getProductsList = async (req, res, next) => {
 	const products =  await Product.fetchAll();
-	res.render('shop', {
+	res.render('shop/product-list', {
 		products: products,
 		hasProducts: products.length > 0,
 		activeShop: true,
