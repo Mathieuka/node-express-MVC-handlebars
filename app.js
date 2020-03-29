@@ -8,6 +8,7 @@ const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 const errorRoutes = require('./routes/404');
 
+
 // Express middleware
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded());

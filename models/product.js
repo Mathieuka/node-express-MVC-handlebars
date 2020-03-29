@@ -3,7 +3,7 @@ const path = require('path');
 
 let products = [];
 
-const getProductsFromFile = async (cb) => {
+const getProductsFromFile = async cb => {
 	await fs.readFile(PATH_TO_PRODUCT_FILE, cb);
 };
 
@@ -29,11 +29,15 @@ const saveProducts = product => (err, fileContent) => {
 	if (!err && product) {
 		const productsParsed = JSON.parse(fileContent);
 		products = [...productsParsed, product];
-		fs.writeFile(PATH_TO_PRODUCT_FILE, JSON.stringify([...products, product]), err => {
-			if (err) {
-				console.log(`Error: ${err}`);
+		fs.writeFile(
+			PATH_TO_PRODUCT_FILE,
+			JSON.stringify([...products]),
+			err => {
+				if (err) {
+					console.log(`Error: ${err}`);
+				}
 			}
-		});
+		);
 	}
 };
 
@@ -45,6 +49,26 @@ exports.product = () => {
 		},
 		save: product => {
 			getProductsFromFile(saveProducts(product));
+		},
+		editProductName: (oldName, newName) => {
+			fs.readFile(PATH_TO_PRODUCT_FILE, (err, fileContent) => {
+				if (err) {
+					console.error(`Error: ${err}`);
+				}
+				const productsParsed = JSON.parse(fileContent);
+				products = productsParsed.map(product => {
+					if (product.name === oldName) {
+						product.name = newName;
+						return product;
+					}
+					return product;
+				});
+				fs.writeFile(PATH_TO_PRODUCT_FILE, JSON.stringify(products), err => {
+					if (err) {
+						console.error(`Error: ${err}`);
+					}
+				});
+			});
 		}
 	};
 };

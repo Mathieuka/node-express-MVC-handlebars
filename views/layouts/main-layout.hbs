@@ -1,37 +1,33 @@
 <!DOCTYPE html>
 
-<script>
-    console.log(window.location.href);
-</script>
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Product</title>
     <html lang="en">
-    
+
     {{#if addProductCSS}}
-        <link rel="stylesheet" href="/css/add-product.css">
+    <link rel="stylesheet" href="/css/add-product.css">
     {{/if}}
-    
+
     {{#if shopCSS}}
-        <link rel="stylesheet" href="/css/shop.css">
+    <link rel="stylesheet" href="/css/shop.css">
     {{/if}}
-    
+
     {{#if productsCSS}}
-        <link rel="stylesheet" href="/css/products.css"> {{!-- added  --}}
+    <link rel="stylesheet" href="/css/products.css">
     {{/if}}
 
     {{#if cartCSS}}
-        <link rel="stylesheet" href="/css/cart.css"> {{!-- added --}}
+    <link rel="stylesheet" href="/css/cart.css">
     {{/if}}
 
     {{#if adminProductsCSS}}
-        <link rel="stylesheet" href="/css/adminProducts.css"> {{!-- added --}}
+    <link rel="stylesheet" href="/css/adminProducts.css">
     {{/if}}
-    
+
     {{#if errorPageNotFoundCSS}}
-        <link rel="stylesheet" href="/css/404.css">
+    <link rel="stylesheet" href="/css/404.css">
     {{/if}}
 </head>
 
@@ -40,10 +36,13 @@
         <nav class="main-header__nav">
             <ul class="main-header__item-list">
                 <li class="main-header__item"><a class="{{#if activeShop }}active{{/if}}" href="/">Shop</a></li>
-                <li class="main-header__item"><a class="{{#if activeProducts }}active{{/if}}" href="/products">Products</a></li> {{!-- added --}}
-                <li class="main-header__item"><a class="{{#if activeCart }}active{{/if}}" href="/cart">Cart</a></li> {{!-- added --}}
-                <li class="main-header__item"><a class="{{#if activeAdminProducts }}active{{/if}}" href="/admin/products">Admin Products</a></li> {{!-- added --}}
-                <li class="main-header__item"><a class="{{#if activeAdminAddProduct }}active{{/if}}" href="/admin/add-product">Admin AddProduct</a></li>
+                <li class="main-header__item"><a class="{{#if activeProducts }}active{{/if}}"
+                        href="/products">Products</a></li>
+                <li class="main-header__item"><a class="{{#if activeCart }}active{{/if}}" href="/cart">Cart</a></li>
+                <li class="main-header__item"><a class="{{#if activeAdminProducts }}active{{/if}}"
+                        href="/admin/products">Admin Products</a></li>
+                <li class="main-header__item"><a class="{{#if activeAdminAddProduct }}active{{/if}}"
+                        href="/admin/add-product">Admin AddProduct</a></li>
             </ul>
         </nav>
     </header>

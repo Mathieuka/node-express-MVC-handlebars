@@ -6,5 +6,10 @@ router.get('/add-product', productController.getAddProduct);
 
 router.post('/add-product', productController.postAddProduct);
 
+router.get('/products', productController.productsList);
+
+router.post('/products', productController.productsList);
+
 exports.routes = router;
+
 

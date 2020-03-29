@@ -1,0 +1,32 @@
+<script>
+    function editMode(name) {
+        window.location.href = `/admin/products/?editProductName=true&productName=${name}`;
+    }
+
+    function edit(newName) {
+        console.log(newName)
+    }
+</script>
+
+<main>
+    <h1 class="main-product">Admin products list</h1>
+    {{#if editProduct}}
+    <form action="/admin/products" method="POST">
+        <div>
+            <label for="name"></label>
+            <input type="text" name="newName">
+        </div>
+        <button type="submit">Edit</button>
+    </form>
+    {{/if}}
+
+    {{#if hasProducts}}
+    <ul>
+        {{#each products}}
+        <li onclick="editMode(`{{this.name}}`)">{{this.name}}</li>
+        {{/each}}
+    </ul>
+    {{else}}
+    <div>No Product...</div>
+    {{/if}}
+</main>
